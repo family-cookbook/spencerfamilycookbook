@@ -1,0 +1,39 @@
+--- 
+title: "Roberta Spencer Family & Friends COOKBOOK"
+author: "The Spencers"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: 
+  bookdown::gitbook: default
+  bookdown::pdf_book:
+    keep_tex: yes
+    latex_engine: xelatex
+    toc_unnumbered: no
+    toc_appendix: yes
+documentclass: book
+link-citations: yes
+github-repo: spencerfamilycookbook/spencerfamilycookbook.github.io
+description: "Recipes from the Spencer Family"
+header-includes:
+  - \usepackage{wrapfig}
+---
+
+# Introduction
+
+This is the Roberta Spencer Family & Friends Cookbook
+
+dedicated to our mother Roberta Belle Spencer who taught us the joy of:
+
+Cooking delightful meals
+
+Eating with family and friends 
+
+Sharing with others
+
+Having "Left-Overs" to enjoy a meal without cooking
+
+---
+
+The original edition was published in 2011 as SPENCER FAMILY RECIPES
+
+---

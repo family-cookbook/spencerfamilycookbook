@@ -1,0 +1,10 @@
+book_filename: "spencerfamilycookbook"
+rmd_files: ["index.Rmd", "01-recipes.Rmd"]
+delete_merged_file: true
+view: https://github.com/spencerfamilycookbook/spencerfamilycookbook.github.io/blob/master/%s
+edit: https://github.com/spencerfamilycookbook/spencerfamilycookbook.github.io/edit/master/%s
+language:
+  label:
+    fig: "Picture "
+  ui:
+    chapter_name: ""
