@@ -19,6 +19,7 @@ jobs:
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN_FOR_PUSH }}
     - name: Update readme
       run: |-
+        timestamp=$(date -u)
         \cp -f *.* sfcb/
         \cp -f images/* sfcb/images
         cd sfcb
