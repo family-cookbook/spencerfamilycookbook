@@ -1,53 +1,27 @@
 on:
   push:
      branches:
-       - master
+       - main
 
-name: renderbook
+name: push book
 
 jobs:
-  bookdown:
-    name: Render-Book
+  push:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: r-lib/actions/setup-r@v1
-      - uses: r-lib/actions/setup-pandoc@v1
-      - name: Install pdflatex
-        run: |
-          Rscript -e 'install.packages(c("tinytex"))'
-          Rscript -e 'tinytex::install_tinytex()'
-      - name: Install rmarkdown
-        run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
-      - name: Render Book
-        run: |
-          Rscript -e 'bookdown::render_book("index.Rmd", "bookdown::pdf_book")'
-          Rscript -e 'bookdown::render_book("index.Rmd", "bookdown::epub_book")'
-          Rscript -e 'bookdown::render_book("index.Rmd", "bookdown::gitbook")'
-      - uses: actions/upload-artifact@v1
-        with:
-          name: _book
-          path: _book/
-  
-  checkout-and-deploy:
-   runs-on: ubuntu-latest
-   needs: bookdown
-   steps:
-     - name: Checkout
-       uses: actions/checkout@master
-     - name: Download artifact
-       uses: actions/download-artifact@v1.0.0
-       with:
-         # Artifact name
-         name: _book # optional
-         # Destination path
-         path: _book # optional
-     - name: Deploy to GitHub Pages
-       uses: Cecilapp/GitHub-Pages-deploy@v3
-       env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       with:
-          email: ${{ secrets.EMAIL }}
-          build_dir: _book  # optional
-          branch: gh-pages  # optional
-          jekyll: no        # optional
+    - name: Checkout this repo
+      uses: actions/checkout@v2
+    - name: Checkout cbeauhilton copy
+      uses: actions/checkout@v2
+      with:
+        repository: cbeauhilton/spencerfamilycookbook
+        path: sfcb
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN_FOR_PUSH }}
+    - name: Update readme
+      run: |-
+        ls
+        git config --global user.name "bot"       
+        git config --global user.email "actions@users.noreply.github.com"
+        git add .
+        git commit -m "update: ${timestamp}. "
+        git push 
