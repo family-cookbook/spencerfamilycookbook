@@ -12,7 +12,7 @@ output:
     toc_appendix: yes
 documentclass: book
 link-citations: yes
-github-repo: family-cookbook/spencerfamilycookbook.github.io
+github-repo: family-cookbook/spencerfamilycookbook
 description: "Recipes from the Spencer Family"
 header-includes:
   - \usepackage{wrapfig}
